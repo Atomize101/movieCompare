@@ -6,7 +6,7 @@ const fetchData = async (searchTerm) => {
         }
     });
 
-    if(response.data.Error) {
+    if (response.data.Error) {
         return [];
     }
 
@@ -30,16 +30,16 @@ const dropdown = document.querySelector('.dropdown');
 const resultsWrapper = document.querySelector('.results');
 
 
-const onInput = async event => {    
-    const movies = await fetchData(event.target.value);    
-    
-    if(!movies.length) {
+const onInput = async event => {
+    const movies = await fetchData(event.target.value);
+
+    if (!movies.length) {
         dropdown.classList.remove('is-active');
     }
 
     resultsWrapper.innerHTML = '';
     dropdown.classList.add('is-active');
-    for(let movie of movies) {
+    for (let movie of movies) {
         const option = document.createElement('a');
         const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
 
@@ -50,15 +50,15 @@ const onInput = async event => {
         `;
 
         option.addEventListener('click', () => {
-                dropdown.classList.remove('is-active');
-                input.value = movie.Title;
-                onMovieSelect(movie);
-            });
+            dropdown.classList.remove('is-active');
+            input.value = movie.Title;
+            onMovieSelect(movie);
+        });
 
         resultsWrapper.appendChild(option);
     }
 };
-input.addEventListener('input', debounce(onInput, 500)); 
+input.addEventListener('input', debounce(onInput, 500));
 
 document.addEventListener('click', event => {
     if (!root.contains(event.target)) {
@@ -82,7 +82,7 @@ const movieTemplate = (movieDetail) => {
         <article class="media">
             <figure class="media-left">
                 <p class="image">
-                    <img src="${movieDetail.Poster} />
+                    <img src="${movieDetail.Poster}" />
                 </p>
             </figure>
             <div class="media-content">
@@ -92,6 +92,26 @@ const movieTemplate = (movieDetail) => {
                     <p>${movieDetail.Plot}</p>
                 </div>
             </div>
+        </article>
+        <article class="notification is-primary"?
+            <p class="title">${movieDetail.Awards}</p>
+            <p class="subtitle">Awards</p>
+        </article>
+        <article class="notification is-primary"?
+            <p class="title">${movieDetail.BoxOffice}</p>
+            <p class="subtitle">Box Office</p>
+        </article>
+        <article class="notification is-primary"?
+            <p class="title">${movieDetail.Metascore}</p>
+            <p class="subtitle">Metascore</p>
+        </article>
+        <article class="notification is-primary"?
+            <p class="title">${movieDetail.imdbRating}</p>
+            <p class="subtitle">IMDB Rating</p>
+        </article>
+        <article class="notification is-primary"?
+            <p class="title">${movieDetail.imdbVotes}</p>
+            <p class="subtitle">IMDB Votes</p>
         </article>
     `;
 };
