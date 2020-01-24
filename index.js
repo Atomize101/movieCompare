@@ -76,7 +76,23 @@ const runComparison = () => {
 const movieTemplate = (movieDetail) => {
 
     const dollars = parseInt(movieDetail.BoxOffice.replace(/\$/g, '').replace(/,/g, ''));
-    console.log(dollars);
+    const metascore = parseInt(movieDetail.Metascore);
+    const imdbRating = parseFloat(movieDetail.imdbRating);
+    const imdbVotes = parseInt(movieDetail.imdbVotes.replace(/,/g, ''));
+
+    let count = 0;
+    const awards = movieDetail.Awards.split('').reduce((prev, word) => {
+        const value = parseInt(word);
+
+        if(isNaN(value)){
+            return prev;
+        } else {
+            return prev + value; 
+        }
+    }, 0);
+    console.log(awards);
+
+    console.log(dollars, metascore, imdbRating, imdbVotes)
 
     return `
         <article class="media">
