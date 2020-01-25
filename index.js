@@ -75,7 +75,17 @@ const runComparison = () => {
 
     leftSideStats.forEach((leftStat, index) => {
         const rightStat = rightSideStats[index];
-        console.log(leftStat, rightStat);
+        
+        const leftSideValue = parseInt(leftStat.dataset.value);
+        const rightSideValue = parseInt(rightStat.dataset.value);
+
+        if(rightSideValue > leftSideValue) {
+            leftStat.classList.remove('is-primary');
+            leftStat.classList.add('is-warning');
+        } else {
+            rightStat.classList.remove('is-primary');
+            rightStat.classList.add('is-warning');
+        }
     });
 };
 
