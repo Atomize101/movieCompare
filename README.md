@@ -1,4 +1,4 @@
-This app will compare stats from two different movies and highlight the differences. Demo the app **[here]**(https://boring-borg-e31d2d.netlify.app)
+This app will compare stats from two different movies and highlight the differences. Demo the app [here](https://boring-borg-e31d2d.netlify.app)
 
 Challenges
 
